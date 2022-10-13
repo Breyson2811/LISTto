@@ -30,3 +30,24 @@ int List::size(){
   }
   return c;
 }
+List* List::appendkth(int e, int pos){
+  if(isEmpty()){
+    last = new Node;
+    last->data = e;
+    last->next = last;
+    return this;
+  }
+  else{
+    Node* n = new Node;
+    n->data = e;
+    Node* iter = last;
+    int i = 0;
+    while(pos-1 > i){
+      iter = iter->next;
+      i++;
+    }
+    n->next = iter->next;
+    iter->next = n;       
+  }  
+  return this;
+}
